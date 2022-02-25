@@ -24,8 +24,8 @@ while True:
         message['To'] = config('MAIL_TO_ADDRESS')
         message.set_content('epaaaa loco')
 
-        mail_server = smtplib.SMTP_SSL(config('MAIL_HOST'), config('MAIL_PORT'))
+        mail_server = smtplib.SMTP_SSL(config('MAIL_HOST'), int(config('MAIL_PORT')))
         mail_server.login(config('MAIL_USERNAME'), config('MAIL_PASSWORD'))
         mail_server.send_message(message)
         mail_server.quit()
-    time.sleep(config('CHECKER_FREQUENCY'))
+    time.sleep(int(config('CHECKER_FREQUENCY')))
