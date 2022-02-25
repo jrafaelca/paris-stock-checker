@@ -28,4 +28,4 @@ while True:
         mail_server.login(config('MAIL_USERNAME'), config('MAIL_PASSWORD'))
         mail_server.send_message(message)
         mail_server.quit()
-    time.sleep(60)
+    time.sleep(config('CHECKER_FREQUENCY'))
