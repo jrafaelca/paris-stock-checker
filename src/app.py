@@ -19,7 +19,7 @@ while True:
 
     if not out_stock:
         message = EmailMessage()
-        message['Subject'] = config('MAIL_FROM_ADDRESS')
+        message['Subject'] = config('MAIL_SUBJECT')
         message['From'] = config('MAIL_FROM_ADDRESS')
         message['To'] = config('MAIL_TO_ADDRESS')
         message.set_content('epaaaa loco')
