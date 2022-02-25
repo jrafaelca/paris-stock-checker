@@ -8,7 +8,8 @@ from email.message import EmailMessage
 while True:
     print("-------------------------------- Last check: " + time.ctime() + "--------------------------------")
 
-    response = requests.get(config('PRODUCT_URL'))
+    url = config('PRODUCT_URL')
+    response = requests.get(url)
     body = response.content
 
     soup = BeautifulSoup(body, 'lxml')
@@ -22,7 +23,7 @@ while True:
         message['Subject'] = config('MAIL_SUBJECT')
         message['From'] = config('MAIL_FROM_ADDRESS')
         message['To'] = config('MAIL_TO_ADDRESS')
-        message.set_content('epaaaa loco')
+        message.set_content('Tu producto ya se encuentra disponible! <a href="'+url+'" target="_blank">' + url + '</a>')
 
         mail_server = smtplib.SMTP_SSL(config('MAIL_HOST'), int(config('MAIL_PORT')))
         mail_server.login(config('MAIL_USERNAME'), config('MAIL_PASSWORD'))
